@@ -1,12 +1,12 @@
-import { Injectable } from '@nestjs/common';
-import { NavItem } from 'react-bootstrap';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { NotFoundError } from 'rxjs';
 import { Tuit } from './tuit.entity';
 
 @Injectable()
 export class TuitsService {
     private tuits: Tuit[]=[
         {
-            id: '1',
+            id: '33',
             message: 'hello world from nest.js'
         },
     ]; 
@@ -16,7 +16,11 @@ export class TuitsService {
     }
 
     getTuit(id: string): Tuit{
-        return this.tuits.find((item) => item.id == id);
+        const tuit = this.tuits.find((item) => item.id === id);
+        if(!tuit){
+            throw new NotFoundException("resource not found")
+        }  
+        return tuit;
     }
 
     createTuit(message: string){
