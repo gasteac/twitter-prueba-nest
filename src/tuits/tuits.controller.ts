@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 
 @Controller('tuits')
-export class FirstController {
+export class TuitsController {
     @Get()
     getTuits(@Query() filterQuery): string{
         const {searchTerm, orderBy} = filterQuery
