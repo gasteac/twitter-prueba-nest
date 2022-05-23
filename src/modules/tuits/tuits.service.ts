@@ -1,5 +1,4 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { NotFoundError } from 'rxjs';
 import { Tuit } from './tuit.entity';
 
 @Injectable()
@@ -9,6 +8,10 @@ export class TuitsService {
             id: '33',
             message: 'hello world from nest.js'
         },
+        {
+            id: '434',
+            message: 'hello XD'
+        }
     ]; 
 
     getTuits(): Tuit[]{
